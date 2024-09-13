@@ -206,22 +206,23 @@ export default function App() {
       {!gameStarted && <h1>Mat-a-Matik</h1>}
       {isHydrated && (
         <form onSubmit={handleSubmit}>
-          <label>
-            <div className={gameStarted ? 'problem-container' : ''}>
-              {mathProblem.string}
-            </div>
-            <input
-              type="number"
-              name="value"
-              placeholder="?"
-              onChange={updateResponse}
-              value={currentResponse}
-              className={inputClass}
-              autoComplete="off"
-              required
-            />
-          </label>
-
+          {gameStarted && (
+            <label>
+              <div className={gameStarted ? 'problem-container' : ''}>
+                {mathProblem.string}
+              </div>
+              <input
+                type="number"
+                name="value"
+                placeholder="?"
+                onChange={updateResponse}
+                value={currentResponse}
+                className={inputClass}
+                autoComplete="off"
+                required
+              />
+            </label>
+          )}
           <div className={`message-container ${messageClass}`}>
             {currentResponse && recentStatusChange && answerStatus}
           </div>
